@@ -15,6 +15,9 @@ This project integrates the OSSEC Host-based Intrusion Detection System (HIDS) w
 - Serial connection via `/dev/ttyUSB0` at 9600 baud
 
 ---
+## Hardware (Arduino Uno)
+![20250908_013635](https://github.com/user-attachments/assets/163026d2-211f-4062-b1ec-d427d85d5ec3)
+
 
 ## Setup
 
@@ -44,9 +47,19 @@ The Arduino listens to serial data at 9600 baud. Upon receiving the string `"ALE
   <timeout>60</timeout>
 </active-response>
 ```
-Make sure the Python script intrusion_monitor.py is located at /var/ossec/active-response/bin/ with executable permissions.
+Run the Ossec:
+```
+sudo /var/ossec/bin/ossec-control start  
+```
+<img width="658" height="477" alt="ossec_running" src="https://github.com/user-attachments/assets/b89da9d0-4694-491a-afce-81a4811b063e" />
 
-Usage & Testing
+
+
+
+
+- **Make sure the Python script intrusion_monitor.py is located at /var/ossec/active-response/bin/ with executable permissions.**
+
+### Usage & Testing
 1. Test Arduino Directly
 
 Configure serial port and send alert command manually:
@@ -59,29 +72,21 @@ Observe LED blinking and check Arduino output with:
 ```
 minicom -b 9600 -D /dev/ttyUSB0
 ```
-2. Test Python Active Response Script Manually
+https://github.com/user-attachments/assets/8bc490dc-955b-4ecc-8e9e-fd0249867087
 
-Run the script as the OSSEC user:
-```
-sudo -u ossec /usr/bin/env python3 /var/ossec/active-response/bin/intrusion_monitor.py
-```
 3. Simulate an Intrusion Alert (Trigger OSSEC)
+   Append a test alert to the monitored log file:
+App<img width="1238" height="475" alt="alert_trigger" src="https://github.com/user-attachments/assets/8dad67d7-ac24-44ad-854f-3b899664acf5" />
 
-Append a test alert to the monitored log file:
-```
-3. Simulate an Intrusion Alert (Trigger OSSEC)
-
-Append a test alert to the monitored log file:
-```
 This should trigger OSSEC to call the active response script, causing the Arduino LED to blink.
 
-Monitoring and Debugging
 
-View Arduino serial output:
-```
-minicom -b 9600 -D /dev/ttyUSB0
-```
-Restart OSSEC after config changes:
-```
-/var/ossec/bin/ossec-control restart
-```
+
+
+
+
+
+https://github.com/user-attachments/assets/779a187a-e9a6-45eb-a183-84e0aa2cbe11
+
+
+
