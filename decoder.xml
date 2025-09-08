@@ -1,0 +1,9 @@
+## Add the following along with default decoders
+```
+<decoder name="test-connection">
+  <prematch>test connection</prematch>
+  <regex>test connection from (\S+) via (\S+) ALERT_TRIGGER</regex>
+  <order>srcip, protocol</order>
+</decoder>
+<!-- EOF -->
+```
