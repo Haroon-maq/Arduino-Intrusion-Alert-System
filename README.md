@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project integrates the OSSEC Host-based Intrusion Detection System (HIDS) with an Arduino board to provide a visual alert (LED blinking) when an intrusion is detected. The system uses a Python active response script to send commands to the Arduino over a serial connection.
+This project integrates the OSSEC Host-based Intrusion Detection System (HIDS) with an Arduino board to provide a visual alert (LED blinking) when an intrusion is detected. The system uses a Bash active response script to send commands to the Arduino over a serial connection.
 
 ---
 
